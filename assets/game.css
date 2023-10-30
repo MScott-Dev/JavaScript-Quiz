@@ -33,3 +33,19 @@
 .incorrect {
     background-color: rgb(220, 46, 46);
 }
+
+/* Scoreboard */
+
+#hud {
+    display: flex;
+    justify-content: space-around;
+}
+
+.hud-prefix {
+    text-align: center;
+    font-size: 32px;
+}
+
+.hud-main-text {
+    text-align: center;
+}

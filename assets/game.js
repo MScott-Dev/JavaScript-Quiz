@@ -1,6 +1,8 @@
 // Get placeholder for question and answers
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
+const questionCounterText = document.getElementById('questionCounter');  
+const scoreText = document.getElementById('score');
 
 // Varibles
 let currentQuestion = [];
@@ -59,11 +61,15 @@ const maxQuestion = 3;
 // functions
 getNewQuestion = () => {
     if (availableQuestions.length == 0 || questionCounter >= maxQuestion){
+        localStorage.setItem('mostRecentScore', score);
          return window.location.assign('/end.html');
     };
 
     
     questionCounter++;
+    questionCounterText.textContent = questionCounter + "/" + maxQuestion;
+
+
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.textContent = currentQuestion.question;
@@ -91,6 +97,10 @@ choices.forEach(choice => {
         const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
         console.log(classToApply);
 
+        if(classToApply === 'correct') {
+            incrementScore(correctBonus);
+        }
+
         selectedChoice.parentElement.classList.add(classToApply);
 
         setTimeout( () => {
@@ -104,6 +114,11 @@ choices.forEach(choice => {
 
 });
 
+incrementScore = num => {
+    score +=num;
+    scoreText.textContent = score;
+}
+
 startGame = () => {
 
     questionCounter = 0;
@@ -115,3 +130,8 @@ startGame = () => {
 
 // Starts the game
 startGame();
+
+
+saveHighScore = (e) => {
+    console.log("clicked");
+};
