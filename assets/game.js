@@ -58,7 +58,7 @@ let questions = [
 
 const correctBonus = 10;
 const maxQuestion = 5;
-var secondsLeft = 50
+var secondsLeft = 20
 
 // functions
 
