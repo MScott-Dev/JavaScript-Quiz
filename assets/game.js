@@ -3,6 +3,7 @@ const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 const questionCounterText = document.getElementById('questionCounter');  
 const scoreText = document.getElementById('score');
+const timer = document.getElementById('time');
 
 // Varibles
 let currentQuestion = [];
@@ -57,8 +58,28 @@ let questions = [
 
 const correctBonus = 10;
 const maxQuestion = 3;
+var secondsLeft = 20
 
 // functions
+
+function clock() {
+    
+    timer.textContent = secondsLeft;
+    clearInterval(time);
+    secondsLeft = 20;
+
+    var time = setInterval(function() {
+        secondsLeft--;
+        timer.textContent = secondsLeft;
+
+        if (secondsLeft === 0) {
+            window.location.assign('./gameOver.html');
+            
+        } 
+    }, 1000);
+}
+
+
 getNewQuestion = () => {
     if (availableQuestions.length == 0 || questionCounter >= maxQuestion){
         localStorage.setItem('mostRecentScore', score);
@@ -125,6 +146,7 @@ startGame = () => {
     score = 0;
     availableQuestions = [...questions];
     getNewQuestion();
+    clock();
 };
 
 
