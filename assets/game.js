@@ -57,8 +57,8 @@ let questions = [
 ];
 
 const correctBonus = 10;
-const maxQuestion = 3;
-var secondsLeft = 20
+const maxQuestion = 5;
+var secondsLeft = 50
 
 // functions
 
@@ -83,7 +83,7 @@ function clock() {
 getNewQuestion = () => {
     if (availableQuestions.length == 0 || questionCounter >= maxQuestion){
         localStorage.setItem('mostRecentScore', score);
-         return window.location.assign('/end.html');
+         return window.location.assign('./end.html');
     };
 
     
