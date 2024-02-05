@@ -1,6 +1,6 @@
 # JavaScript-Quiz
 
-Small quiz to test your knowledge on JavaScript!
+Small quiz to test your knowledge on JavaScript made using JavaScript!
 
 ## Description 
 ![Image of the webpage](./assets/JavaScript.PNG)
